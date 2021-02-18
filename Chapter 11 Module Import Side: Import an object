@@ -1,17 +1,21 @@
-import MessageMixer from './messageMixer.js'
+import {getCadre as cadre, calculateTax as tax, getBenefits as benefits, calculateBonus as bonus, reimbursementEligibility as reimbursement} from './employee'
+
+import employee from './employee'
+
+console.log(employee)
+
+function getEmployeeInformation(inputSalary) {
+      employee.salary = inputSalary;
+      console.log('Cadre: ' + cadre());
+      console.log('Tax: ' + tax());
+      console.log('Benefits: ' + benefits());
+      console.log('Bonus: ' + bonus());
+      console.log('Reimbursement Eligibility: ' + reimbursement() + '\n');
+    }
 
 
-function displayMessage() {
-  console.log(MessageMixer.countCharacter("What is the color of the sky?", "t"));
-  console.log(MessageMixer.capitalizeFirstCharacterOfWords("What is the color of the sky?"));
-  console.log(MessageMixer.reverseWord("What is the color of the sky?"));
-  console.log(MessageMixer.reverseAllWords("What is the color of the sky?"));
-  console.log(MessageMixer.replaceFirstOccurence("What is the color of the sky?", "sky", "water"));
-  console.log(MessageMixer.encode("What is the color of the sky?"));
-  console.log(MessageMixer.palindrome("Hey what is up bro"));
-  console.log(MessageMixer.pigLatin("What is up bro", "J"))
-  
-  ;
-}
 
-displayMessage();
+
+getEmployeeInformation(10000);
+getEmployeeInformation(50000);
+getEmployeeInformation(100000);
