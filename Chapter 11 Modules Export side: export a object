@@ -1,59 +1,49 @@
-let MessageMixer = {}
- 
-MessageMixer.palindrome = function (str) {return str + " " + MessageMixer.reverseWord(str)}
+let employee = {
+    salary: 100000,
+    }
+    
+    
 
-MessageMixer.pigLatin = function (sentence, character) {return sentence.split(" ").join(character + " ")}
-
- MessageMixer.countCharacter = function(inputString, inputCharacter) {
-  let count = 0;
-  let string = inputString.toLowerCase();
-  let character = inputCharacter.toLowerCase();
-    for (let i = 0; i < string.length; i++) {
-      if (string[i] === character) {
-         count++;
+    
+    export  let getCadre = function () {
+      if (employee.salary >= payGrades.entryLevel.minemployeeSalary && employee.salary <= payGrades.entryLevel.maxemployeeSalary) {
+        return 'entryLevel';
+      } else if (employee.salary >= payGrades.midLevel.minemployeeSalary && employee.salary <= payGrades.midLevel.maxemployeeSalary) {
+        return 'midLevel';
+      } else return 'seniorLevel';
+    }
+    
+     export let calculateTax = function () {
+      return payGrades[getCadre()].taxMultiplier * employee.salary;
+    }
+    
+     export let getBenefits = function () {
+      return payGrades[getCadre()].benefits.join(', ');
+    }
+    
+     export let calculateBonus = function () {
+      return .02 * employee.salary;
+    }
+    
+    export let reimbursementEligibility = function () {
+      let reimbursementCosts = { health: 5000, housing: 8000, wellness: 6000, gym: 12000 };
+      let totalBenefitsValue = 0; 
+      let employeeBenefits = payGrades[getCadre()].benefits;
+      for (let i = 0; i < employeeBenefits.length; i++) {
+        totalBenefitsValue += reimbursementCosts[employeeBenefits[i]];
       }
+      return totalBenefitsValue;
     }
-  return count; 
-};
-
- MessageMixer.capitalizeFirstCharacterOfWords = function(string) {
-  let arr = string.split(" ");  
-    for (let i = 0; i < arr.length; i++) {  
-      let word = arr[i];
-        arr[i] = word[0].toUpperCase() + word.substring(1); 
-    }
-  return arr.join(" "); 
-};
+    
 
 
-MessageMixer.reverseWord = function(word) {
-  return word.split("").reverse().join("");
-};
-
-MessageMixer.reverseAllWords = function(sentence) {
-  let words = sentence.split(" ");
-    for (let i = 0; i < words.length; i++) {
-      words[i] = MessageMixer.reverseWord(words[i]);
-    }
-   return words.join(" ");
-};
+    export let payGrades = {
+    entryLevel: { taxMultiplier: .05, benefits: ['health'], minemployeeSalary: 10000, maxemployeeSalary: 49999 },
+    midLevel: { taxMultiplier: .1, benefits: ['health', 'housing'], minemployeeSalary: 50000, maxemployeeSalary: 99999 },
+    seniorLevel: { taxMultiplier: .2, benefits: ['health', 'housing', 'wellness', 'gym'], minemployeeSalary: 100000, maxemployeeSalary: 200000 }
+    };
 
 
-MessageMixer.replaceFirstOccurence= function(string, toBeReplaced, replaceWith) {
-  return string.replace(toBeReplaced, replaceWith);
-};
-
-MessageMixer.replaceAllOccurrences = function(string, toBeReplaced, replaceWith) {
-  return string.split(toBeReplaced).join(replaceWith);
-};
-
-MessageMixer.encode = function(string) {
-  let replacementObject = { "a": "@", "s": "$", "i": "!", "o":"0" };
-    for (let key in replacementObject) {
-      string = MessageMixer.replaceAllOccurrences(string, key, replacementObject[key]); 
-    }	
-    return string;
-};
-
-
-export default MessageMixer;
+ console.log(employee)
+    
+    export default employee;
