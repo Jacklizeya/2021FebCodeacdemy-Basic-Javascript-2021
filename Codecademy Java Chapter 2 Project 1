@@ -1,0 +1,48 @@
+let userInput = "ROCK"
+const getUserChoice = (a) => 
+{
+a = a.toLowerCase()
+if (a === "rock" || a === "paper" || a === "scissors" ) {return a};
+console.log("warning") ;
+}
+
+const getComputerChoice = () => 
+{
+let i= Math.floor(   Math.random() * 2   )
+switch (i) 
+{
+case 0: return("rock");break;
+case 1: return ("paper");break;
+case 2: return ("scissors");break
+}
+}
+
+function determineWinner(userChoice, computerChoice) 
+{
+if (userChoice === computerChoice) {return "The game was a tie"}
+{
+if (userChoice === "rock") { if (computerChoice === "paper") { return"computer won"}; return "user won"};
+if (userChoice === "paper") { if (computerChoice === "scissors") { return"computer won"};  return "user won"};
+if (userChoice === "scissors") { if (computerChoice === "paper") { return"computer won"}; return "user won"}
+}
+}
+
+
+function playGame() 
+{
+if (userInput === "bomb") {console.log("the user wins!")}
+else {
+   let userChoice = getUserChoice(userInput);
+console.log(`user  choice is ${userChoice} `)
+let computerChoice = getComputerChoice();
+console.log(`computer choice is  ${computerChoice} `)
+console.log( determineWinner(userChoice, computerChoice))
+}
+}
+
+playGame()
+
+
+
+
+
