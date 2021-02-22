@@ -1,0 +1,46 @@
+const getSleepHours = (day) => {
+   day=day.toLowerCase()
+   switch(day)
+   {
+   case "monday": return 4; break;
+   case "tuesday": return 5; break;
+   case "wednesday": return 6; break;
+   case "thursday": return 5; break;
+   case "friday": return 4; break;
+   case "saturday": return 6; break;
+   case "sunday": return 7; break;
+   default: return "Invalid input"; break;
+   }
+   }
+
+let weekarray = ["monday","tuesday","wednesday","thursday","friday","saturday","sunday"]
+let actualarray = [4,5,6,5,4,6,7]
+let idealarray = [8,8,8,8,8,8,8]
+
+const getActualSleepHours = () =>
+{
+let sum = 0
+for (i=0 ; i < weekarray.length; i++) { sum = sum + actualarray[i]  }
+return sum
+}
+
+const getIdealSleepHours = () =>
+{
+let sum = 0
+for (i=0 ; i < weekarray.length; i++) { sum = sum + idealarray[i]  }
+return sum
+}
+
+let totalActual = getActualSleepHours()
+let totalIdeal = getIdealSleepHours ()
+let sleepdebt = totalIdeal - totalActual
+
+console.log(`The total actual is ${totalActual}, totalIdeal is ${totalIdeal}, the sleep debt is ${sleepdebt}  `)
+
+if (totalActual === totalIdeal) {console.log("The user get perfect amount of sleep")}
+   else if (totalActual > totalIdeal) {console.log("The user got more sleep than needed")}
+   else {console.log("The user should get more rest")}
+
+
+
+   
