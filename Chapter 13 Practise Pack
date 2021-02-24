@@ -1,0 +1,20 @@
+// Define your function below:
+
+
+
+const matchPromises = async () => 
+{
+try 
+{let firstresult = await first(); console.log(firstresult)
+let yresult = await second(); console.log(yresult)
+if (firstresult === yresult) {return "match"}
+else if (firstresult !== yresult) {return "no match"}}
+
+catch (error) {console.log(error)}
+}
+
+
+function first () {return new Promise((resolve, reject)=> { reject("firstfailed")})}
+function second () {return new Promise((resolve, reject)=> { reject("secondfailed")})}
+
+matchPromises()
